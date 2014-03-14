@@ -25,6 +25,7 @@ public class GamePanel extends JPanel implements GameListener {
 	private ArrayList<Card> cards;
 	private JPanel testPanel;
 	private int playerScore;
+	private boolean gameOver = false;
 	
 	public GamePanel(){
 
@@ -53,6 +54,7 @@ public class GamePanel extends JPanel implements GameListener {
 		testPanel.removeAll();
 		testPanel.validate();
 		testPanel.repaint();
+
 		
 	}
 	
@@ -80,6 +82,11 @@ public class GamePanel extends JPanel implements GameListener {
 		playerScore = 0;
 		for(Card c : cards){
 			playerScore += c.getRank();
+			
+			if(playerScore == 21){
+				System.out.println("You Win!");
+				gameOver();
+			}
 		}
 
 		
@@ -90,8 +97,17 @@ public class GamePanel extends JPanel implements GameListener {
 
 	@Override
 	public void gameOver() {
-		// TODO Auto-generated method stub
+		gameOver = true;
+//		gameStart();
 		
+	}
+	
+	public void stay(){
+		System.out.println("You stayed at: " + playerScore);
+	}
+	
+	public int getPlayerScore(){
+		return playerScore;
 	}
 
 

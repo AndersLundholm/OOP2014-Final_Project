@@ -41,16 +41,19 @@ public class MainFrame extends JFrame{
 		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new FlowLayout());
+		
 		JButton newGameButton = new JButton("New Game");
 		newGameButton.addActionListener(startNewGame);
 		
+		JButton hitButton = new JButton("Hit");
+		hitButton.addActionListener(hit);
 		
-		JButton drawCardsButton = new JButton("Take Card");
-		drawCardsButton.addActionListener(drawCards);
+		JButton stayButton = new JButton("Stay");
+		stayButton.addActionListener(stay);
 		
-		
-		buttonPanel.add(drawCardsButton);
 		buttonPanel.add(newGameButton);
+		buttonPanel.add(hitButton);
+		buttonPanel.add(stayButton);
 		
 		this.add(buttonPanel, BorderLayout.NORTH);
 		this.add(gamePanel, BorderLayout.CENTER);
@@ -71,16 +74,25 @@ public class MainFrame extends JFrame{
 		}
 	};
 	
-	private ActionListener drawCards = new ActionListener(){
+	private ActionListener hit = new ActionListener(){
+		@Override
+		public void actionPerformed(ActionEvent e){
+			if(game != null && gamePanel.getPlayerScore() < 21){
+				game.dealCards();
+			} else {
+//				game = new Game(gamePanel);
+//				game.dealCards();
+			}
+			
+		}
+	};
+	
+	private ActionListener stay = new ActionListener(){
 		@Override
 		public void actionPerformed(ActionEvent e){
 			if(game != null){
-				game.dealCards();
-			} else {
-				game = new Game(gamePanel);
-				game.dealCards();
-			}
-			
+				gamePanel.stay();
+			} 			
 		}
 	};
 

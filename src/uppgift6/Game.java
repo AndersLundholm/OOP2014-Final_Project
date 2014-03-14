@@ -18,7 +18,8 @@ public class Game {
 		dealer = new Dealer(gameListener);
 		
 		gameListener.gameStart();
-		
+		dealCards();
+		dealCards();
 		
 	}
 	
@@ -29,6 +30,10 @@ public class Game {
 		dealer.dealCards();
 		
 	}
+	
+//	public void stay(){
+//		System.out.println("You stayed at:" + gameListener.);
+//	}
 	
 	public int checkScore(ArrayList<Card> cards){
 		int score = 0;
