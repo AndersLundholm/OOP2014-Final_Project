@@ -26,6 +26,7 @@ public class GamePanel extends JPanel implements GameListener {
 	private JPanel playerCardPanel;
 	private JPanel dealerCardPanel;
 	private int playerScore;
+	private int dealerScore;
 	private boolean gameOver = false;
 	
 	public GamePanel(){
@@ -35,13 +36,16 @@ public class GamePanel extends JPanel implements GameListener {
 		this.setSize(9999, 200);
 //		this.setBackground(Color.black);
 		playerScore = 0;
+//		cardPanel = new CardPanel(cards);
 		dealerCardPanel = new JPanel();
-		dealerCardPanel.setSize(9999, 110);
+//		dealerCardPanel.setSize(9999, 110);
+//		dealerCardPanel.add(cardPanel);
 		playerCardPanel = new JPanel();
 		
 //		playerCardPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		this.add(dealerCardPanel, BorderLayout.NORTH);
 		this.add(playerCardPanel, BorderLayout.CENTER);
+//		this.add(cardPanel, BorderLayout.CENTER);
 		
 		gameStart();
 
@@ -56,6 +60,7 @@ public class GamePanel extends JPanel implements GameListener {
 		playerCardPanel.removeAll();
 		playerCardPanel.validate();
 		playerCardPanel.repaint();
+		
 
 		
 	}
@@ -67,14 +72,14 @@ public class GamePanel extends JPanel implements GameListener {
 	}
 
 	@Override
-	public void dealCard(Card card) {
+	public void dealPlayerCard(Card card) {
 		
 		System.out.println(card.toString());
 		cards.add(card);
 		
 		CardPanel cardPanel = new CardPanel(cards);
 		
-		playerCardPanel.add(cardPanel, BorderLayout.SOUTH);
+		playerCardPanel.add(cardPanel, BorderLayout.CENTER);
 
 		playerCardPanel.repaint();
 
@@ -93,6 +98,35 @@ public class GamePanel extends JPanel implements GameListener {
 
 		
 		System.out.println(playerScore);
+	}
+	
+	@Override
+	public void dealDealerCard(Card card) {
+		
+		System.out.println(card.toString());
+		cards.add(card);
+		
+		CardPanel cardPanel = new CardPanel(cards);
+		
+		dealerCardPanel.add(cardPanel, BorderLayout.CENTER);
+
+		dealerCardPanel.repaint();
+
+		dealerCardPanel.setSize(1000, 500);
+		
+//		playerScore = game.checkScore(cards);
+		dealerScore = 0;
+		for(Card c : cards){
+			dealerScore += c.getRank();
+			
+			if(dealerScore == 21){
+				System.out.println("You Loose!");
+				gameOver();
+			}
+		}
+
+		
+		System.out.println(dealerScore);
 	}
 	
 

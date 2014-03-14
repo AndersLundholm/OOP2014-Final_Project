@@ -18,16 +18,22 @@ public class Game {
 		dealer = new Dealer(gameListener);
 		
 		gameListener.gameStart();
-		dealCards();
-		dealCards();
+		dealPlayerCards();
+		dealPlayerCards();
 		
 	}
 	
 
 	
-	public void dealCards(){
+	public void dealPlayerCards(){
 		
-		dealer.dealCards();
+		dealer.dealCards(1);
+		
+	}
+	
+	public void dealDealerCards(){
+		
+		dealer.dealCards(0);
 		
 	}
 	

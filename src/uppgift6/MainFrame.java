@@ -79,7 +79,7 @@ public class MainFrame extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e){
 			if(game != null && gamePanel.getPlayerScore() < 21){
-				game.dealCards();
+				game.dealPlayerCards();
 			} 			
 		}
 	};
@@ -89,6 +89,7 @@ public class MainFrame extends JFrame{
 		public void actionPerformed(ActionEvent e){
 			if(gamePanel != null){
 				gamePanel.stay();
+				game.dealDealerCards();
 			} 			
 		}
 	};

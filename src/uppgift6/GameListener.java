@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public interface GameListener {
 	void gameStart();
 	void playerBet(int bet);
-	void dealCard(Card card);
+	void dealPlayerCard(Card card);
+	void dealDealerCard(Card card);
 	void gameOver();
 }

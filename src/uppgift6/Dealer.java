@@ -18,11 +18,15 @@ public class Dealer {
 		deck = new Deck();
 	}
 	
-	public void dealCards(){	
+	public void dealCards(int dealTo){	
 		if(deck.getSize() > 0){
 			Card card = deck.drawCard();
 			cards.add(card);
-			gameListener.dealCard(card);
+			if(dealTo == 1){
+				gameListener.dealPlayerCard(card);
+			} else {
+				gameListener.dealDealerCard(card);
+			}
 		} else {
 			System.out.println("No more cards!");
 		}
