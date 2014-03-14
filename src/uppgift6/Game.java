@@ -1,5 +1,7 @@
 package uppgift6;
 
+import java.util.ArrayList;
+
 /**
  * @author Anders Lundholm
  *
@@ -26,6 +28,14 @@ public class Game {
 		
 		dealer.dealCards();
 		
+	}
+	
+	public int checkScore(ArrayList<Card> cards){
+		int score = 0;
+		for(Card card : cards){
+			score += card.getRank();
+		}
+		return score;
 	}
 	
 	

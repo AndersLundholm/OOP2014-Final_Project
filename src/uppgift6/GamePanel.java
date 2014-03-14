@@ -24,7 +24,7 @@ public class GamePanel extends JPanel implements GameListener {
 	private Game game;
 	private ArrayList<Card> cards;
 	private JPanel testPanel;
-	private int row = 1;
+	private int playerScore;
 	
 	public GamePanel(){
 
@@ -32,6 +32,7 @@ public class GamePanel extends JPanel implements GameListener {
 		
 		this.setSize(500, 700);
 		this.setBackground(Color.black);
+		playerScore = 0;
 		testPanel = new JPanel();
 		
 		testPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -67,13 +68,22 @@ public class GamePanel extends JPanel implements GameListener {
 		System.out.println(card.toString());
 		cards.add(card);
 		
-		CardPanel cardPanel = new CardPanel(cards, row);
+		CardPanel cardPanel = new CardPanel(cards);
+		
 		testPanel.add(cardPanel, BorderLayout.SOUTH);
 
 		testPanel.repaint();
 
 		testPanel.setSize(1000, 500);
-		row++;
+		
+//		playerScore = game.checkScore(cards);
+		playerScore = 0;
+		for(Card c : cards){
+			playerScore += c.getRank();
+		}
+
+		
+		System.out.println(playerScore);
 	}
 	
 

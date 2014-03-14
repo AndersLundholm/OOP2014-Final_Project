@@ -23,7 +23,7 @@ public class CardPanel extends JPanel {
 	private int y2;
 	private int row;
 
-	public CardPanel(ArrayList<Card> cards, int row){
+	public CardPanel(ArrayList<Card> cards){
 		
 		this.setSize(1000, 500);
 //		this.card = card;
