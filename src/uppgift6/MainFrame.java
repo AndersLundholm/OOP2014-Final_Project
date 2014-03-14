@@ -26,7 +26,7 @@ public class MainFrame extends JFrame{
 	
 	
 	public MainFrame(){
-//		this.setLayout(new GridLayout(2, 1, 10, 10));
+		this.setLayout(new BorderLayout());
 		image = new ImageIcon("img/background.jpg");
 		backgroundPanel = new BackgroundPanel(image);
 		
@@ -41,6 +41,7 @@ public class MainFrame extends JFrame{
 		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new FlowLayout());
+		buttonPanel.setSize(9999, 50);
 		
 		JButton newGameButton = new JButton("New Game");
 		newGameButton.addActionListener(startNewGame);
@@ -55,12 +56,13 @@ public class MainFrame extends JFrame{
 		buttonPanel.add(hitButton);
 		buttonPanel.add(stayButton);
 		
-		this.add(buttonPanel, BorderLayout.NORTH);
+		
 		this.add(gamePanel, BorderLayout.CENTER);
-
+		this.add(buttonPanel, BorderLayout.SOUTH);
+		
 		this.setTitle("Black Jack!");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setSize(1000, 1000);
+		this.setSize(800, 600);
 //		this.pack();
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
@@ -70,7 +72,6 @@ public class MainFrame extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e){
 			game = new Game(gamePanel);
-
 		}
 	};
 	
@@ -79,18 +80,14 @@ public class MainFrame extends JFrame{
 		public void actionPerformed(ActionEvent e){
 			if(game != null && gamePanel.getPlayerScore() < 21){
 				game.dealCards();
-			} else {
-//				game = new Game(gamePanel);
-//				game.dealCards();
-			}
-			
+			} 			
 		}
 	};
 	
 	private ActionListener stay = new ActionListener(){
 		@Override
 		public void actionPerformed(ActionEvent e){
-			if(game != null){
+			if(gamePanel != null){
 				gamePanel.stay();
 			} 			
 		}

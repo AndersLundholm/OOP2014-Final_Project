@@ -23,23 +23,25 @@ public class GamePanel extends JPanel implements GameListener {
 	private CardPanel cardPanel;
 	private Game game;
 	private ArrayList<Card> cards;
-	private JPanel testPanel;
+	private JPanel playerCardPanel;
+	private JPanel dealerCardPanel;
 	private int playerScore;
 	private boolean gameOver = false;
 	
 	public GamePanel(){
 
-		this.setLayout(new FlowLayout(FlowLayout.LEFT));
+		this.setLayout(new BorderLayout());
 		
-		this.setSize(500, 700);
-		this.setBackground(Color.black);
+		this.setSize(9999, 200);
+//		this.setBackground(Color.black);
 		playerScore = 0;
-		testPanel = new JPanel();
+		dealerCardPanel = new JPanel();
+		dealerCardPanel.setSize(9999, 110);
+		playerCardPanel = new JPanel();
 		
-		testPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-
-		
-		this.add(testPanel);
+//		playerCardPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		this.add(dealerCardPanel, BorderLayout.NORTH);
+		this.add(playerCardPanel, BorderLayout.CENTER);
 		
 		gameStart();
 
@@ -51,9 +53,9 @@ public class GamePanel extends JPanel implements GameListener {
 
 		System.out.println("Game started!");
 		cards = new ArrayList<Card>();
-		testPanel.removeAll();
-		testPanel.validate();
-		testPanel.repaint();
+		playerCardPanel.removeAll();
+		playerCardPanel.validate();
+		playerCardPanel.repaint();
 
 		
 	}
@@ -72,11 +74,11 @@ public class GamePanel extends JPanel implements GameListener {
 		
 		CardPanel cardPanel = new CardPanel(cards);
 		
-		testPanel.add(cardPanel, BorderLayout.SOUTH);
+		playerCardPanel.add(cardPanel, BorderLayout.SOUTH);
 
-		testPanel.repaint();
+		playerCardPanel.repaint();
 
-		testPanel.setSize(1000, 500);
+		playerCardPanel.setSize(1000, 500);
 		
 //		playerScore = game.checkScore(cards);
 		playerScore = 0;

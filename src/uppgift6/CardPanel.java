@@ -1,6 +1,7 @@
 package uppgift6;
 
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
@@ -16,30 +17,16 @@ public class CardPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Card> cards = new ArrayList<Card>();
-//	private Card card;
 	private int x1;
 	private int y1;
 	private int x2;
 	private int y2;
-	private int row;
 
-	public CardPanel(ArrayList<Card> cards){
-		
-		this.setSize(1000, 500);
-//		this.card = card;
-		this.row = row;
+	public CardPanel(ArrayList<Card> cards){		
+		this.setSize(9999, 110);
 		this.cards = cards;
-
-
-		
-//		x1 = 0;
-//		x2 = cards.get(0).getImage().getWidth(null);
-		
-		
-//		cards.add(card);
-		
+//		this.setLayout(new FlowLayout(FlowLayout.CENTER));
 	}
-	
 	
 	@Override
 	protected void paintComponent(Graphics g){
@@ -47,37 +34,17 @@ public class CardPanel extends JPanel {
 		
 		y1 = 0;
 		y2 = cards.get(0).getImage().getHeight(null);
-		x1 = 0;
-		x2 = cards.get(0).getImage().getWidth(null);
+		x1 = 200;
+		x2 = 200 + cards.get(0).getImage().getWidth(null);
 
 		for(Card card : cards){
-
-					if(card.getImage() != null){
-						
-							g.drawImage(card.getImage(), x1, y1, x2, y2, 0, 0, card.getImage().getWidth(null), card.getImage().getHeight(null), null);
-							x1 += card.getImage().getWidth(null) + 10;  
-							x2 += card.getImage().getWidth(null) + 10;
-							
-						
-					
-					} else { 
-						System.out.println("No image found!");
-					}
-
-			
-
-			
-		}
-		
-//		x1 -= (cards.get(0).getImage().getWidth(null)+10);
-//		x2 -= (cards.get(0).getImage().getWidth(null)+10);
-		
-//		x1 -= (cards.get(0).getImage().getWidth(null)+10*cards.size()+1);
-//		x2 -= (cards.get(0).getImage().getWidth(null)+10);
-//		y1 -= 30;
-//		y2 -= 30;
-		
-		
+			if(card.getImage() != null){
+				g.drawImage(card.getImage(), x1, y1, x2, y2, 0, 0, card.getImageWidth(), card.getImageHeight(), null);
+				x1 += card.getImageWidth() + 10;  
+				x2 += card.getImageWidth() + 10;		
+			} else { 
+				System.out.println("No image found!");
+			}
+		}		
 	}
-
 }

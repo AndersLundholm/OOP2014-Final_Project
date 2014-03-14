@@ -61,5 +61,7 @@ public class Card {
 	public int getRank(){ return rank; }
 	public Suits getSuit(){ return suit; }
 	public Image getImage(){ return cardImage; }
+	public int getImageHeight() { return cardImage.getHeight(null);} 
+	public int getImageWidth() { return cardImage.getWidth(null);}
 	
 }
