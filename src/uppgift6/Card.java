@@ -57,8 +57,14 @@ public class Card {
 		return rankString + " of " + suit;
 	}
 	
+	public int getRank(){ 
+		if(rank > 10){
+			rank = 10;
+		}
+		return rank; 
+	}
+	
 	public int getIndex(){ return index; }
-	public int getRank(){ return rank; }
 	public Suits getSuit(){ return suit; }
 	public Image getImage(){ return cardImage; }
 	public int getImageHeight() { return cardImage.getHeight(null);} 
