@@ -27,17 +27,21 @@ public class GamePanel extends JPanel implements GameListener {
 	private JPanel playerCardPanel;
 	private JPanel dealerCardPanel;
 	private int playerScore;
-	private int dealerScore;
+//	private int dealerScore;
 	private boolean gameOver = false;
 	
 	public GamePanel(){
 
-		this.setLayout(new GridLayout(2, 1, 10, 10));
+		this.setLayout(new GridLayout(3, 1, 10, 10));
+		
+		JLabel dealerLabel = new JLabel();
+		dealerLabel.setText("Hello!!!!!!!!!!!!!!!!");
+		
+		
 		
 //		this.setSize(9999, 500);
 //		this.setBackground(Color.black);
 		playerScore = 0;
-//		cardPanel = new CardPanel(cards);
 		dealerCardPanel = new JPanel();
 		dealerCardPanel.setSize(9999, 110);
 //		dealerCardPanel.add(cardPanel);
@@ -46,7 +50,10 @@ public class GamePanel extends JPanel implements GameListener {
 		
 //		playerCardPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		this.add(dealerCardPanel, BorderLayout.NORTH);
+		
 		this.add(playerCardPanel, BorderLayout.CENTER);
+		
+		this.add(dealerLabel, BorderLayout.SOUTH);
 //		this.add(cardPanel, BorderLayout.CENTER);
 		
 		gameStart();
@@ -85,21 +92,23 @@ public class GamePanel extends JPanel implements GameListener {
 		
 		CardPanel cardPanel = new CardPanel(playerCards);
 		
+		
+		
 		playerCardPanel.add(cardPanel, BorderLayout.SOUTH);
 
 		playerCardPanel.repaint();
 
-		playerScore = 0;
-		for(Card c : playerCards){
-			playerScore += c.getRank();
-			
-			if(playerScore == 21){
-				System.out.println("You Win!");
-				gameOver();
-			}
-		}
-
-		System.out.println(playerScore);
+//		playerScore = 0;
+//		for(Card c : playerCards){
+//			playerScore += c.getRank();
+//			
+//			if(playerScore == 21){
+//				System.out.println("You Win!");
+//				gameOver();
+//			}
+//		}
+//
+//		System.out.println(playerScore);
 	}
 	
 	@Override
@@ -110,8 +119,11 @@ public class GamePanel extends JPanel implements GameListener {
 		
 		CardPanel cardPanel = new CardPanel(dealerCards);
 		
+
 		dealerCardPanel.add(cardPanel, BorderLayout.CENTER);
 
+		
+//		dealerCardPanel.validate();
 		dealerCardPanel.repaint();
 
 //		dealerScore = 0;
@@ -144,18 +156,7 @@ public class GamePanel extends JPanel implements GameListener {
 		return playerScore;
 	}
 	
-	public int getDealerScore(){
-		return dealerScore;
-	}
 
-	public void dealerPlay(){
-//		int dealerScore = gameListener.getPlayerScore();
-		if(dealerScore < 17){
-//			dealDealerCards();
-	}
-
-	
-	}
 
 
 

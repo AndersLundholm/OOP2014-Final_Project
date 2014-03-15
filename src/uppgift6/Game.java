@@ -11,6 +11,7 @@ public class Game {
 	private GameListener gameListener;
 	private Dealer dealer;
 	private DealerPlay dealerPlay;
+	private int dealerScore = 0;
 	
 	public Game(GameListener gameListener){
 		
@@ -40,25 +41,33 @@ public class Game {
 		
 	}
 	
-	public void dealerPlay(){
-
-		ArrayList<Card> dealerCards = dealer.getDealerCards();
-		int dealerScore = 0;
+	public void dealerPlay() {
 		
+		
+		ArrayList<Card> dealerCards = dealer.getDealerCards();
+		
+		dealDealerCards();
 		for(Card c : dealerCards){
 			dealerScore += c.getRank();
-			
-			
-//			else{
-//				System.out.println("Dealer stays!");
-//			}
 		}
 		
 		if(dealerScore < 17){
-			dealDealerCards();
+			
+//			try {
+//				Thread.sleep(2000);
+//			} catch(InterruptedException e){
+//				e.printStackTrace();
+//			}
+			
 			dealerCards = dealer.getDealerCards();
+			System.out.println("Dealer has: " + dealerScore);
+			
+			
+			
+			dealerPlay();
 		}
-		System.out.println("Dealer has: " + dealerScore);
+		
+		
 		
 	}
 	
