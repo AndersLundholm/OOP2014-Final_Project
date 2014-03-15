@@ -34,7 +34,7 @@ public class GamePanel extends JPanel implements GameListener {
 
 		this.setLayout(new GridLayout(2, 1, 10, 10));
 		
-		this.setSize(9999, 500);
+//		this.setSize(9999, 500);
 //		this.setBackground(Color.black);
 		playerScore = 0;
 //		cardPanel = new CardPanel(cards);
@@ -89,9 +89,6 @@ public class GamePanel extends JPanel implements GameListener {
 
 		playerCardPanel.repaint();
 
-//		playerCardPanel.setSize(1000, 500);
-		
-//		playerScore = game.checkScore(cards);
 		playerScore = 0;
 		for(Card c : playerCards){
 			playerScore += c.getRank();
@@ -118,9 +115,6 @@ public class GamePanel extends JPanel implements GameListener {
 
 		dealerCardPanel.repaint();
 
-//		dealerCardPanel.setSize(1000, 500);
-		
-//		playerScore = game.checkScore(cards);
 		dealerScore = 0;
 		for(Card c : dealerCards){
 			dealerScore += c.getRank();
@@ -151,9 +145,19 @@ public class GamePanel extends JPanel implements GameListener {
 	public int getPlayerScore(){
 		return playerScore;
 	}
+	
+	public int getDealerScore(){
+		return dealerScore;
+	}
 
+	public void dealerPlay(){
+//		int dealerScore = gameListener.getPlayerScore();
+		if(dealerScore < 17){
+//			dealDealerCards();
+	}
 
 	
+	}
 
 
 

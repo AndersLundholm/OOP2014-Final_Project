@@ -26,16 +26,12 @@ public class Game {
 	
 
 	
-	public void dealPlayerCards(){
-		
-		dealer.dealCards(1);
-		
+	public void dealPlayerCards(){	
+		dealer.dealCards(1);	
 	}
 	
-	public void dealDealerCards(){
-		
-		dealer.dealCards(0);
-		
+	public void dealDealerCards(){	
+		dealer.dealCards(0);	
 	}
 	
 //	public void stay(){

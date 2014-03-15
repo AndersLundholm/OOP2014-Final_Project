@@ -12,5 +12,6 @@ public interface GameListener {
 	void playerBet(int bet);
 	void dealPlayerCard(Card card);
 	void dealDealerCard(Card card);
+	public int getPlayerScore();
 	void gameOver();
 }
