@@ -18,6 +18,7 @@ public class Game {
 		dealer = new Dealer(gameListener);
 		
 		gameListener.gameStart();
+		dealDealerCards();
 		dealPlayerCards();
 		dealPlayerCards();
 		

@@ -26,7 +26,7 @@ public class MainFrame extends JFrame{
 	
 	
 	public MainFrame(){
-		this.setLayout(new BorderLayout());
+//		this.setLayout(new BorderLayout());
 		image = new ImageIcon("img/background.jpg");
 		backgroundPanel = new BackgroundPanel(image);
 		

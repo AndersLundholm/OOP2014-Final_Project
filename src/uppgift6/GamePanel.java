@@ -22,7 +22,8 @@ public class GamePanel extends JPanel implements GameListener {
 	private Deck deck;
 	private CardPanel cardPanel;
 	private Game game;
-	private ArrayList<Card> cards;
+	private ArrayList<Card> playerCards;
+	private ArrayList<Card> dealerCards;
 	private JPanel playerCardPanel;
 	private JPanel dealerCardPanel;
 	private int playerScore;
@@ -31,16 +32,17 @@ public class GamePanel extends JPanel implements GameListener {
 	
 	public GamePanel(){
 
-		this.setLayout(new BorderLayout());
+		this.setLayout(new GridLayout(2, 1, 10, 10));
 		
-		this.setSize(9999, 200);
+		this.setSize(9999, 500);
 //		this.setBackground(Color.black);
 		playerScore = 0;
 //		cardPanel = new CardPanel(cards);
 		dealerCardPanel = new JPanel();
-//		dealerCardPanel.setSize(9999, 110);
+		dealerCardPanel.setSize(9999, 110);
 //		dealerCardPanel.add(cardPanel);
 		playerCardPanel = new JPanel();
+		playerCardPanel.setSize(9999, 110);
 		
 //		playerCardPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		this.add(dealerCardPanel, BorderLayout.NORTH);
@@ -56,12 +58,16 @@ public class GamePanel extends JPanel implements GameListener {
 	public void gameStart() {
 
 		System.out.println("Game started!");
-		cards = new ArrayList<Card>();
+		playerCards = new ArrayList<Card>();
+		dealerCards = new ArrayList<Card>();
+		
+		
+		dealerCardPanel.removeAll();
+		dealerCardPanel.validate();
+		dealerCardPanel.repaint();
 		playerCardPanel.removeAll();
 		playerCardPanel.validate();
 		playerCardPanel.repaint();
-		
-
 		
 	}
 	
@@ -75,19 +81,19 @@ public class GamePanel extends JPanel implements GameListener {
 	public void dealPlayerCard(Card card) {
 		
 		System.out.println(card.toString());
-		cards.add(card);
+		playerCards.add(card);
 		
-		CardPanel cardPanel = new CardPanel(cards);
+		CardPanel cardPanel = new CardPanel(playerCards);
 		
-		playerCardPanel.add(cardPanel, BorderLayout.CENTER);
+		playerCardPanel.add(cardPanel, BorderLayout.SOUTH);
 
 		playerCardPanel.repaint();
 
-		playerCardPanel.setSize(1000, 500);
+//		playerCardPanel.setSize(1000, 500);
 		
 //		playerScore = game.checkScore(cards);
 		playerScore = 0;
-		for(Card c : cards){
+		for(Card c : playerCards){
 			playerScore += c.getRank();
 			
 			if(playerScore == 21){
@@ -104,19 +110,19 @@ public class GamePanel extends JPanel implements GameListener {
 	public void dealDealerCard(Card card) {
 		
 		System.out.println(card.toString());
-		cards.add(card);
+		dealerCards.add(card);
 		
-		CardPanel cardPanel = new CardPanel(cards);
+		CardPanel cardPanel = new CardPanel(dealerCards);
 		
 		dealerCardPanel.add(cardPanel, BorderLayout.CENTER);
 
 		dealerCardPanel.repaint();
 
-		dealerCardPanel.setSize(1000, 500);
+//		dealerCardPanel.setSize(1000, 500);
 		
 //		playerScore = game.checkScore(cards);
 		dealerScore = 0;
-		for(Card c : cards){
+		for(Card c : dealerCards){
 			dealerScore += c.getRank();
 			
 			if(dealerScore == 21){
