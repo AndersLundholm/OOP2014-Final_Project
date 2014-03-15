@@ -99,7 +99,6 @@ public class GamePanel extends JPanel implements GameListener {
 			}
 		}
 
-		
 		System.out.println(playerScore);
 	}
 	
@@ -115,18 +114,16 @@ public class GamePanel extends JPanel implements GameListener {
 
 		dealerCardPanel.repaint();
 
-		dealerScore = 0;
-		for(Card c : dealerCards){
-			dealerScore += c.getRank();
-			
-			if(dealerScore == 21){
-				System.out.println("You Loose!");
-				gameOver();
-			}
-		}
-
-		
-		System.out.println(dealerScore);
+//		dealerScore = 0;
+//		for(Card c : dealerCards){
+//			dealerScore += c.getRank();
+//			
+//			if(dealerScore == 21){
+//				System.out.println("You Loose!");
+//				gameOver();
+//			}
+//		}
+//		System.out.println(dealerScore);
 	}
 	
 

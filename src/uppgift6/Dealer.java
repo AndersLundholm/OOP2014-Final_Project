@@ -11,7 +11,9 @@ public class Dealer {
 	
 	private Deck deck;
 	private GameListener gameListener;
-	private ArrayList<Card> cards = new ArrayList<Card>();
+	private ArrayList<Card> dealerCards = new ArrayList<Card>();
+	private ArrayList<Card> playerCards = new ArrayList<Card>();
+	private Card card;
 	
 	public Dealer(GameListener gameListener){
 		this.gameListener = gameListener;
@@ -20,15 +22,21 @@ public class Dealer {
 	
 	public void dealCards(int dealTo){	
 		if(deck.getSize() > 0){
-			Card card = deck.drawCard();
-			cards.add(card);
+			card = deck.drawCard();
+			
 			if(dealTo == 1){
+				playerCards.add(card);
 				gameListener.dealPlayerCard(card);
 			} else {
+				dealerCards.add(card);
 				gameListener.dealDealerCard(card);
 			}
 		} else {
 			System.out.println("No more cards!");
 		}
+	}
+	
+	public ArrayList<Card> getDealerCards(){
+		return dealerCards;
 	}
 }
