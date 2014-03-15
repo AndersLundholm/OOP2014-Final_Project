@@ -34,6 +34,15 @@ public class Game {
 		dealer.dealCards(0);	
 	}
 	
+	public void dealerPlay(int dealerScore){
+
+		System.out.println(dealerScore);
+		if(dealerScore < 17){
+			dealDealerCards();
+		}
+		
+	}
+	
 //	public void stay(){
 //		System.out.println("You stayed at:" + gameListener.);
 //	}

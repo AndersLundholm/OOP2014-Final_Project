@@ -89,11 +89,12 @@ public class MainFrame extends JFrame{
 		public void actionPerformed(ActionEvent e){
 			if(gamePanel != null){
 				gamePanel.stay();
-				int dealerScore = gamePanel.getDealerScore();
-				System.out.println(dealerScore);
-				if(dealerScore < 17){
-					game.dealDealerCards();
-				}
+				game.dealerPlay(gamePanel.getDealerScore());
+//				int dealerScore = gamePanel.getDealerScore();
+//				System.out.println(dealerScore);
+//				if(dealerScore < 17){
+//					game.dealDealerCards();
+//				}
 			} 			
 		}
 	};

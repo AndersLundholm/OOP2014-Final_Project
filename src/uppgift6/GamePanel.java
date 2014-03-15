@@ -140,6 +140,7 @@ public class GamePanel extends JPanel implements GameListener {
 	
 	public void stay(){
 		System.out.println("You stayed at: " + playerScore);
+		
 	}
 	
 	public int getPlayerScore(){
