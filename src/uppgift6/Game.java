@@ -45,26 +45,36 @@ public class Game {
 		
 		
 		ArrayList<Card> dealerCards = dealer.getDealerCards();
-		
+		dealerScore = 0;
 		dealDealerCards();
+		boolean ace = false;
 		for(Card c : dealerCards){
-			dealerScore += c.getRank();
+			if(c.getRank() == 1 && dealerScore >= 6 && dealerScore <= 10){
+				dealerScore += 11;
+				ace = true;
+			} else {
+				if(ace == true && dealerScore >= 6 && dealerScore <= 10){
+					dealerScore += c.getRank() +10;
+				} else {
+					dealerScore += c.getRank();
+				}
+			}
+			
 		}
 		
 		if(dealerScore < 17){
 			
-//			try {
-//				Thread.sleep(2000);
-//			} catch(InterruptedException e){
-//				e.printStackTrace();
-//			}
-			
 			dealerCards = dealer.getDealerCards();
 			System.out.println("Dealer has: " + dealerScore);
-			
-			
-			
+//			gameListener.setLabel("Dealer has: " + dealerScore);
 			dealerPlay();
+		} else if(dealerScore > 21){
+			System.out.println("Dealer bust!");
+		} else {
+			if(dealerCards.size() == 2 && dealerScore == 21){
+				System.out.println("Dealer has BlackJack!");
+			}
+			System.out.println("Dealer has: " + dealerScore);
 		}
 		
 		

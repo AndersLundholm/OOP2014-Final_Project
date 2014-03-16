@@ -29,13 +29,13 @@ public class GamePanel extends JPanel implements GameListener {
 	private int playerScore;
 //	private int dealerScore;
 	private boolean gameOver = false;
+	private JLabel dealerLabel;
 	
 	public GamePanel(){
 
 		this.setLayout(new GridLayout(3, 1, 10, 10));
 		
-		JLabel dealerLabel = new JLabel();
-		dealerLabel.setText("Hello!!!!!!!!!!!!!!!!");
+		
 		
 		
 		
@@ -53,11 +53,13 @@ public class GamePanel extends JPanel implements GameListener {
 		
 		this.add(playerCardPanel, BorderLayout.CENTER);
 		
+		dealerLabel = new JLabel();
+		dealerLabel.setText("HelloooooO!!!");
 		this.add(dealerLabel, BorderLayout.SOUTH);
 //		this.add(cardPanel, BorderLayout.CENTER);
 		
 		gameStart();
-
+		
 		
 	}
 
@@ -138,6 +140,15 @@ public class GamePanel extends JPanel implements GameListener {
 //		System.out.println(dealerScore);
 	}
 	
+	@Override
+	public void setLabel(String text){
+		dealerLabel.setText(text);
+		dealerLabel.revalidate();
+		dealerLabel.repaint();
+		dealerCardPanel.repaint();
+		playerCardPanel.repaint();
+		dealerLabel.repaint();
+	}
 
 
 	@Override

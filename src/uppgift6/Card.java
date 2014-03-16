@@ -27,8 +27,7 @@ public class Card {
 		this.index = index;
 		rank = index % 13 +1;
 		suit = Suits.values()[index/13];
-		
-		
+
 		ImageIcon cardIcon = new ImageIcon("img/cards/" + (index + 1) + ".png");
 		cardImage = cardIcon.getImage();
 		
