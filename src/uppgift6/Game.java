@@ -32,6 +32,7 @@ public class Game {
 	
 	public void dealPlayerCards(){	
 		dealer.dealCards(1);	
+		checkPlayerScore();
 	}
 	
 	public void dealDealerCards(){	
@@ -110,7 +111,7 @@ public class Game {
 			if(playerCards.size() == 2 && dealerScore == 21){
 				System.out.println("Player has BlackJack!");
 			}
-			System.out.println("Player has: " + dealerScore);
+			System.out.println("Player has: " + playerScore);
 		}	
 	}
 	

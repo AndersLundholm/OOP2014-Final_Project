@@ -88,14 +88,8 @@ public class MainFrame extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e){
 			if(gamePanel != null){
-				gamePanel.stay();
+//				gamePanel.stay();
 				game.dealerPlay();
-//				game.dealerPlay(gamePanel.getDealerScore());
-//				int dealerScore = gamePanel.getDealerScore();
-//				System.out.println(dealerScore);
-//				if(dealerScore < 17){
-//					game.dealDealerCards();
-//				}
 			} 			
 		}
 	};
