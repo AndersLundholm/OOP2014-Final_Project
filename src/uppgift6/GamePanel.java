@@ -133,11 +133,11 @@ public class GamePanel extends JPanel implements GameListener {
 	@Override
 	public void setLabel(String text){
 		dealerLabel.setText(text);
-		dealerLabel.revalidate();
+		dealerLabel.validate();
 		dealerLabel.repaint();
 		dealerCardPanel.repaint();
 		playerCardPanel.repaint();
-		dealerLabel.repaint();
+
 	}
 
 

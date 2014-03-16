@@ -68,7 +68,7 @@ public class Game {
 			
 			dealerCards = dealer.getDealerCards();
 			System.out.println("Dealer has: " + dealerScore);
-//			gameListener.setLabel("Dealer has: " + dealerScore);
+			gameListener.setLabel("Dealer has: " + dealerScore);
 			dealerPlay();
 		} else if(dealerScore > 21){
 			System.out.println("Dealer bust!");
