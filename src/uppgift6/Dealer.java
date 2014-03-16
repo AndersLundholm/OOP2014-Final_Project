@@ -39,4 +39,8 @@ public class Dealer {
 	public ArrayList<Card> getDealerCards(){
 		return dealerCards;
 	}
+	
+	public ArrayList<Card> getPlayerCards(){
+		return playerCards;
+	}
 }

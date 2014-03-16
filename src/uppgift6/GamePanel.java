@@ -128,16 +128,6 @@ public class GamePanel extends JPanel implements GameListener {
 //		dealerCardPanel.validate();
 		dealerCardPanel.repaint();
 
-//		dealerScore = 0;
-//		for(Card c : dealerCards){
-//			dealerScore += c.getRank();
-//			
-//			if(dealerScore == 21){
-//				System.out.println("You Loose!");
-//				gameOver();
-//			}
-//		}
-//		System.out.println(dealerScore);
 	}
 	
 	@Override
