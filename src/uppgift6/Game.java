@@ -76,15 +76,7 @@ public class Game {
 				System.out.println("Dealer has BlackJack!");
 			} else {
 			
-				checkScore();
-				System.out.println("Dealer has: " + dealerScore);
-				System.out.println("Player has: " + playerScore);
-				if(playerScore > dealerScore){
-					System.out.println("Player wins!");
-				} else {
-					System.out.println("Dealer wins!");
-				}
-			
+				decideWinner();
 			
 			}
 			
@@ -92,13 +84,9 @@ public class Game {
 		
 		
 		
-	}
+	}	
 	
-//	public void stay(){
-//		System.out.println("You stayed at:" + gameListener.);
-//	}
-	
-	public void checkScore(){
+	public void checkPlayerScore(){
 		
 		ArrayList<Card> playerCards = dealer.getPlayerCards();
 		playerScore = 0;
@@ -123,8 +111,22 @@ public class Game {
 				System.out.println("Player has BlackJack!");
 			}
 			System.out.println("Player has: " + dealerScore);
+		}	
+	}
+	
+	public void decideWinner(){
+		checkPlayerScore();
+		System.out.println("Dealer has: " + dealerScore);
+		System.out.println("Player has: " + playerScore);
+		if(dealerScore > 21){
+			System.out.println("Player wins!");
+		} else {
+			if(playerScore > dealerScore){
+				System.out.println("Player wins!");
+			} else {
+				System.out.println("Dealer wins!");
+			}
 		}
-
 		
 	}
 	
