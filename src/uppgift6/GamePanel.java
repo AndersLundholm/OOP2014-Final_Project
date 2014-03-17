@@ -1,14 +1,8 @@
 package uppgift6;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -19,44 +13,30 @@ import javax.swing.JPanel;
 public class GamePanel extends JPanel implements GameListener {
 
 	private static final long serialVersionUID = 1L;
-	private Deck deck;
-	private CardPanel cardPanel;
-	private Game game;
-	private ArrayList<Card> playerCards;
-	private ArrayList<Card> dealerCards;
+	private ArrayList<Card> playerCards = new ArrayList<Card>();
+	private ArrayList<Card> dealerCards = new ArrayList<Card>();
 	private JPanel playerCardPanel;
 	private JPanel dealerCardPanel;
-	private int playerScore;
-//	private int dealerScore;
-	private boolean gameOver = false;
 	private JLabel dealerLabel;
 	
 	public GamePanel(){
 
-		this.setLayout(new GridLayout(3, 1, 10, 10));
+		this.setLayout(new BorderLayout());
 		
-		
-		
-		
-		
-//		this.setSize(9999, 500);
-//		this.setBackground(Color.black);
-		playerScore = 0;
-		dealerCardPanel = new JPanel();
+		this.setSize(9999, 500);
+
+		dealerCardPanel = new CardPanel(dealerCards);
 		dealerCardPanel.setSize(9999, 110);
-//		dealerCardPanel.add(cardPanel);
-		playerCardPanel = new JPanel();
+		playerCardPanel = new CardPanel(playerCards);
 		playerCardPanel.setSize(9999, 110);
 		
-//		playerCardPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		this.add(dealerCardPanel, BorderLayout.NORTH);
 		
 		this.add(playerCardPanel, BorderLayout.CENTER);
 		
 		dealerLabel = new JLabel();
-		dealerLabel.setText("HelloooooO!!!");
+		dealerLabel.setText("Here be text!");
 		this.add(dealerLabel, BorderLayout.SOUTH);
-//		this.add(cardPanel, BorderLayout.CENTER);
 		
 		gameStart();
 		
@@ -77,6 +57,12 @@ public class GamePanel extends JPanel implements GameListener {
 		playerCardPanel.removeAll();
 		playerCardPanel.validate();
 		playerCardPanel.repaint();
+		dealerLabel.removeAll();
+		dealerLabel.validate();
+		dealerLabel.repaint();
+//		this.removeAll();
+//		this.validate();
+//		this.repaint();
 		
 	}
 	
@@ -91,26 +77,13 @@ public class GamePanel extends JPanel implements GameListener {
 		
 		System.out.println(card.toString());
 		playerCards.add(card);
-		
-		CardPanel cardPanel = new CardPanel(playerCards);
-		
-		
-		
-		playerCardPanel.add(cardPanel, BorderLayout.SOUTH);
 
-		playerCardPanel.repaint();
+		
+		CardPanel playerCardPanel = new CardPanel(playerCards);
 
-//		playerScore = 0;
-//		for(Card c : playerCards){
-//			playerScore += c.getRank();
-//			
-//			if(playerScore == 21){
-//				System.out.println("You Win!");
-//				gameOver();
-//			}
-//		}
-//
-//		System.out.println(playerScore);
+		this.add(playerCardPanel, BorderLayout.CENTER);
+
+		this.repaint();
 	}
 	
 	@Override
@@ -119,47 +92,33 @@ public class GamePanel extends JPanel implements GameListener {
 		System.out.println(card.toString());
 		dealerCards.add(card);
 		
-		CardPanel cardPanel = new CardPanel(dealerCards);
-		
+		CardPanel dealerCardPanel = new CardPanel(dealerCards);
 
-		dealerCardPanel.add(cardPanel, BorderLayout.CENTER);
-
+		this.add(dealerCardPanel, BorderLayout.CENTER);
 		
-//		dealerCardPanel.validate();
-		dealerCardPanel.repaint();
+		
+		
+		dealerCardPanel.validate();
+
+		this.repaint();
 
 	}
 	
 	@Override
 	public void setLabel(String text){
 		dealerLabel.setText(text);
-		dealerLabel.validate();
-		dealerLabel.repaint();
-		dealerCardPanel.repaint();
-		playerCardPanel.repaint();
-
+//		dealerLabel.validate();
+//		dealerLabel.repaint();
+//		dealerCardPanel.repaint();
+//		playerCardPanel.repaint();
+		this.repaint();
 	}
 
 
 	@Override
 	public void gameOver() {
-		gameOver = true;
-//		gameStart();
+
 		
 	}
-	
-	public void stay(){
-		System.out.println("You stayed at: " + playerScore);
-		
-	}
-	
-	public int getPlayerScore(){
-		return playerScore;
-	}
-	
-
-
-
-
 
 }

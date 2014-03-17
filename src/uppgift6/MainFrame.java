@@ -2,7 +2,6 @@ package uppgift6;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,26 +18,20 @@ public class MainFrame extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 	private BackgroundPanel backgroundPanel;
-//	private CardPanel cardPanel;
 	private GamePanel gamePanel;
 	private ImageIcon image;
 	private Game game = null;
 	
-	
 	public MainFrame(){
-//		this.setLayout(new BorderLayout());
+		this.setLayout(new BorderLayout());
 		image = new ImageIcon("img/background.jpg");
 		backgroundPanel = new BackgroundPanel(image);
 		
 		gamePanel = new GamePanel();
-		
-		
-//		this.setContentPane(backgroundPanel);
-//		cardPanel = new CardPanel();
+			
+		this.setContentPane(backgroundPanel);
 //		this.add(backgroundPanel);
-//		backgroundPanel.add(cardPanel);
-		
-		
+			
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new FlowLayout());
 		buttonPanel.setSize(9999, 50);
@@ -55,8 +48,7 @@ public class MainFrame extends JFrame{
 		buttonPanel.add(newGameButton);
 		buttonPanel.add(hitButton);
 		buttonPanel.add(stayButton);
-		
-		
+			
 		this.add(gamePanel, BorderLayout.CENTER);
 		this.add(buttonPanel, BorderLayout.SOUTH);
 		
@@ -78,7 +70,7 @@ public class MainFrame extends JFrame{
 	private ActionListener hit = new ActionListener(){
 		@Override
 		public void actionPerformed(ActionEvent e){
-			if(game != null && gamePanel.getPlayerScore() < 21){
+			if(game != null){
 				game.dealPlayerCards();
 			} 			
 		}

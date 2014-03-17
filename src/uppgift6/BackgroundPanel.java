@@ -17,7 +17,7 @@ public class BackgroundPanel extends JPanel{
 	private Image backgroundImage;
 	
 	public BackgroundPanel(ImageIcon image){
-//		this.setLayout(new BorderLayout());
+		this.setLayout(new BorderLayout());
 		backgroundImage = image.getImage();
 	}
 	

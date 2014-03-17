@@ -10,7 +10,6 @@ public class Game {
 	
 	private GameListener gameListener;
 	private Dealer dealer;
-	private DealerPlay dealerPlay;
 	private int dealerScore;
 	private int playerScore;
 	
@@ -22,7 +21,6 @@ public class Game {
 		
 		gameListener.gameStart();
 		dealDealerCards();
-//		dealer.dealCards(0);
 		dealPlayerCards();
 		dealPlayerCards();
 		
@@ -33,19 +31,14 @@ public class Game {
 	public void dealPlayerCards(){	
 		dealer.dealCards(1);	
 		checkPlayerScore();
+		gameListener.setLabel("Player has: " + playerScore);
 	}
 	
-	public void dealDealerCards(){	
-		
+	public void dealDealerCards(){		
 		dealer.dealCards(0);
-			
-		
-		
 	}
 	
 	public void dealerPlay() {
-		
-		
 		ArrayList<Card> dealerCards = dealer.getDealerCards();
 		dealerScore = 0;
 		dealDealerCards();
@@ -61,30 +54,26 @@ public class Game {
 					dealerScore += c.getRank();
 				}
 			}
-			
 		}
 		
-		if(dealerScore < 17){
-			
+		if(dealerScore < 17){	
 			dealerCards = dealer.getDealerCards();
 			System.out.println("Dealer has: " + dealerScore);
 			gameListener.setLabel("Dealer has: " + dealerScore);
 			dealerPlay();
 		} else if(dealerScore > 21){
 			System.out.println("Dealer bust!");
+			gameListener.setLabel("Dealer bust!");
 		} else {
 			if(dealerCards.size() == 2 && dealerScore == 21){
 				System.out.println("Dealer has BlackJack!");
+				gameListener.setLabel("Dealer has BlackJack!");
 			} else {
 			
 				decideWinner();
 			
 			}
-			
 		}
-		
-		
-		
 	}	
 	
 	public void checkPlayerScore(){
@@ -121,11 +110,14 @@ public class Game {
 		System.out.println("Player has: " + playerScore);
 		if(dealerScore > 21){
 			System.out.println("Player wins!");
+			gameListener.setLabel("Dealer has: " + dealerScore + ", Player has: " + playerScore + ", Player wins!");
 		} else {
 			if(playerScore > dealerScore){
 				System.out.println("Player wins!");
+				gameListener.setLabel("Dealer has: " + dealerScore + ", Player has: " + playerScore + ", Player wins!");
 			} else {
 				System.out.println("Dealer wins!");
+				gameListener.setLabel("Dealer has: " + dealerScore + ", Player has: " + playerScore + ", Dealer wins!");
 			}
 		}
 		

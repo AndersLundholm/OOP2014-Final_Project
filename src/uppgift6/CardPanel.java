@@ -1,12 +1,7 @@
 package uppgift6;
 
-import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -29,22 +24,26 @@ public class CardPanel extends JPanel {
 	}
 	
 	@Override
-	protected void paintComponent(Graphics g){
-		super.paintComponent(g);
-		
-		y1 = 0;
-		y2 = cards.get(0).getImage().getHeight(null);
-		x1 = 200;
-		x2 = 200 + cards.get(0).getImage().getWidth(null);
+	public void paint(Graphics g){
+//		super.paint(g);
+//		this.setBackground(Color.blue);
 
-		for(Card card : cards){
-			if(card.getImage() != null){
-				g.drawImage(card.getImage(), x1, y1, x2, y2, 0, 0, card.getImageWidth(), card.getImageHeight(), null);
-				x1 += card.getImageWidth() + 10;  
-				x2 += card.getImageWidth() + 10;		
-			} else { 
-				System.out.println("No image found!");
-			}
-		}		
+		if(cards.size() > 0){
+			y1 = 0;
+			y2 = cards.get(0).getImage().getHeight(null);
+			x1 = 200;
+			x2 = 200 + cards.get(0).getImage().getWidth(null);
+	
+			for(Card card : cards){
+				if(card.getImage() != null){
+					g.drawImage(card.getImage(), x1, y1, x2, y2, 0, 0, 
+							card.getImageWidth(), card.getImageHeight(), null);
+					x1 += card.getImageWidth() + 10;  
+					x2 += card.getImageWidth() + 10;		
+				} else { 
+					System.out.println("No image found!");
+				}
+			}		
+		}
 	}
 }
