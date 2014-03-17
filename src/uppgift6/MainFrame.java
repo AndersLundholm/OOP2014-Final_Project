@@ -1,10 +1,10 @@
 package uppgift6;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,7 +20,7 @@ public class MainFrame extends JFrame{
 	private BackgroundPanel backgroundPanel;
 	private GamePanel gamePanel;
 	private ImageIcon image;
-	private Game game = null;
+	private Game game;
 	
 	public MainFrame(){
 		this.setLayout(new BorderLayout());
@@ -35,6 +35,7 @@ public class MainFrame extends JFrame{
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new FlowLayout());
 		buttonPanel.setSize(9999, 50);
+		buttonPanel.setBackground(new Color(0,0,0,0));
 		
 		JButton newGameButton = new JButton("New Game");
 		newGameButton.addActionListener(startNewGame);
@@ -79,12 +80,9 @@ public class MainFrame extends JFrame{
 	private ActionListener stay = new ActionListener(){
 		@Override
 		public void actionPerformed(ActionEvent e){
-			if(gamePanel != null){
-//				gamePanel.stay();
+			if(game != null){
 				game.dealerPlay();
 			} 			
 		}
 	};
-
-
 }

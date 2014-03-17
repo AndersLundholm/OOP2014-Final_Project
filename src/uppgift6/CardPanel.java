@@ -1,5 +1,8 @@
 package uppgift6;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -20,12 +23,12 @@ public class CardPanel extends JPanel {
 	public CardPanel(ArrayList<Card> cards){		
 		this.setSize(9999, 110);
 		this.cards = cards;
-//		this.setLayout(new FlowLayout(FlowLayout.CENTER));
+		this.setLayout(new BorderLayout());
 	}
 	
 	@Override
-	public void paint(Graphics g){
-//		super.paint(g);
+	public void paintComponent(Graphics g){
+//		super.paintComponent(g);
 //		this.setBackground(Color.blue);
 
 		if(cards.size() > 0){
