@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements GameListener {
 		
 		statusFont = new Font("SansSerif", Font.PLAIN, 16);
 		statusLabel = new JLabel();
-		statusLabel.setText("Here be text! This should update when Stay button is pressed.");
+		statusLabel.setText("Here be text! This should get updated.");
 		statusLabel.setFont(statusFont);
 		statusLabel.setForeground(Color.black);
 		
