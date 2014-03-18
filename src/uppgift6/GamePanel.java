@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,7 +22,8 @@ public class GamePanel extends JPanel implements GameListener {
 	private JPanel dealerCardPanel;
 	private JLabel statusLabel;
 	private Font statusFont;
-	private TablePanel tablePanel;
+//	private TablePanel tablePanel;
+	private JPanel tablePanel;
 	
 	public GamePanel(){
 
@@ -29,29 +31,7 @@ public class GamePanel extends JPanel implements GameListener {
 		
 		this.setSize(9999, 500);
 		this.setBackground(new Color(0,0,0,0));
-		
-		tablePanel = new TablePanel();
-		
-		
-		dealerCardPanel = new CardPanel(dealerCards);
-		dealerCardPanel.setSize(9999, 110);
-		
-		playerCardPanel = new CardPanel(playerCards);
-		playerCardPanel.setSize(9999, 110);
-		
-		statusFont = new Font("SansSerif", Font.PLAIN, 16);
-		statusLabel = new JLabel();
-		statusLabel.setText("Here be text! This should get updated.");
-		statusLabel.setFont(statusFont);
-		statusLabel.setForeground(Color.black);
-		
-		tablePanel.add(dealerCardPanel, FlowLayout.LEFT);
-		tablePanel.add(playerCardPanel, FlowLayout.LEFT);
-		this.add(tablePanel, BorderLayout.CENTER);
-//		this.add(dealerCardPanel, BorderLayout.NORTH);
-//		this.add(playerCardPanel, BorderLayout.CENTER);
-		this.add(statusLabel, BorderLayout.SOUTH);
-		
+	
 		gameStart();
 		
 	}
@@ -62,19 +42,32 @@ public class GamePanel extends JPanel implements GameListener {
 		System.out.println("Game started!");
 		playerCards = new ArrayList<Card>();
 		dealerCards = new ArrayList<Card>();
-			
-		dealerCardPanel.removeAll();
-		dealerCardPanel.validate();
-		dealerCardPanel.repaint();
-		playerCardPanel.removeAll();
-		playerCardPanel.validate();
-		playerCardPanel.repaint();
-		statusLabel.removeAll();
-		statusLabel.validate();
-		statusLabel.repaint();
-//		this.removeAll();
-//		this.validate();
-//		this.repaint();
+		
+		this.removeAll();
+		this.validate();
+		this.repaint();
+		
+		dealerCardPanel = new JPanel();
+		dealerCardPanel.setBackground(new Color(0,0,0,0));
+	
+		playerCardPanel = new JPanel();
+		playerCardPanel.setBackground(new Color(0,0,0,0));
+
+		statusFont = new Font("SansSerif", Font.BOLD, 16);
+		statusLabel = new JLabel();
+		statusLabel.setText("Here be text! This should get updated.");
+		statusLabel.setFont(statusFont);
+		statusLabel.setForeground(Color.black);
+		
+		tablePanel = new JPanel();
+		tablePanel.setLayout(new GridLayout(2,1));
+//		tablePanel.setLayout(new BorderLayout());
+		tablePanel.setBackground(new Color(0,0,0,0));
+		
+		tablePanel.add(dealerCardPanel);
+		tablePanel.add(playerCardPanel);
+		this.add(tablePanel, BorderLayout.CENTER);
+		this.add(statusLabel, BorderLayout.SOUTH);
 	}
 	
 	@Override
@@ -90,10 +83,11 @@ public class GamePanel extends JPanel implements GameListener {
 		playerCards.add(card);
 
 		
-		CardPanel playerCardPanel = new CardPanel(playerCards);
+//		CardPanel playerCardPanel = new CardPanel(playerCards);
 
 		playerCardPanel.add(new DrawableCard(card));
 		
+		tablePanel.add(dealerCardPanel);
 		tablePanel.add(playerCardPanel);
 		
 //		this.add(playerCardPanel, BorderLayout.CENTER);
@@ -111,12 +105,12 @@ public class GamePanel extends JPanel implements GameListener {
 		System.out.println(card.toString());
 		dealerCards.add(card);
 		
-		CardPanel dealerCardPanel = new CardPanel(dealerCards);
+//		CardPanel dealerCardPanel = new CardPanel(dealerCards);
 
-		playerCardPanel.add(new DrawableCard(card));
+		dealerCardPanel.add(new DrawableCard(card));
 		
+		tablePanel.add(dealerCardPanel);
 		tablePanel.add(playerCardPanel);
-		
 //		this.add(dealerCardPanel, BorderLayout.CENTER);
 		
 //		dealerCardPanel.validate();

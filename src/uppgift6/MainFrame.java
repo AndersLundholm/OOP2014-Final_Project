@@ -64,6 +64,7 @@ public class MainFrame extends JFrame{
 	private ActionListener startNewGame = new ActionListener(){
 		@Override
 		public void actionPerformed(ActionEvent e){
+			backgroundPanel.repaint();
 			game = new Game(gamePanel);
 		}
 	};
@@ -72,6 +73,7 @@ public class MainFrame extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e){
 			if(game != null){
+				backgroundPanel.repaint();
 				game.dealPlayerCards();
 			} 			
 		}
@@ -81,6 +83,7 @@ public class MainFrame extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e){
 			if(game != null){
+				backgroundPanel.repaint();
 				game.dealerPlay();
 			} 			
 		}
