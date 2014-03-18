@@ -30,7 +30,6 @@ public class MainFrame extends JFrame{
 		gamePanel = new GamePanel();
 			
 		this.setContentPane(backgroundPanel);
-//		this.add(backgroundPanel);
 			
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new FlowLayout());
@@ -56,7 +55,6 @@ public class MainFrame extends JFrame{
 		this.setTitle("Black Jack!");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(800, 600);
-//		this.pack();
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 	}
@@ -72,7 +70,7 @@ public class MainFrame extends JFrame{
 	private ActionListener hit = new ActionListener(){
 		@Override
 		public void actionPerformed(ActionEvent e){
-			if(game != null){
+			if(game != null && game.getStay() == false){
 				backgroundPanel.repaint();
 				game.dealPlayerCards();
 			} 			
@@ -82,7 +80,7 @@ public class MainFrame extends JFrame{
 	private ActionListener stay = new ActionListener(){
 		@Override
 		public void actionPerformed(ActionEvent e){
-			if(game != null){
+			if(game != null && game.getStay() == false){
 				backgroundPanel.repaint();
 				game.dealerPlay();
 			} 			

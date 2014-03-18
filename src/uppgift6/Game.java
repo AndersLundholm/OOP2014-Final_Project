@@ -12,6 +12,7 @@ public class Game {
 	private Dealer dealer;
 	private int dealerScore;
 	private int playerScore;
+	private boolean stay = false;
 	
 	public Game(GameListener gameListener){
 		
@@ -20,10 +21,11 @@ public class Game {
 		dealer = new Dealer(gameListener);
 		
 		gameListener.gameStart();
-		dealDealerCards();
-		dealPlayerCards();
-		dealPlayerCards();
 		
+		dealDealerCards();
+		
+		dealPlayerCards();
+		dealPlayerCards();
 	}
 	
 
@@ -39,6 +41,7 @@ public class Game {
 	}
 	
 	public void dealerPlay() {
+		stay = true;
 		ArrayList<Card> dealerCards = dealer.getDealerCards();
 		dealerScore = 0;
 		dealDealerCards();
@@ -123,6 +126,6 @@ public class Game {
 		
 	}
 	
+	public boolean getStay(){ return stay; }
 	
-
 }

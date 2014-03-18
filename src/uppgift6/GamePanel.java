@@ -57,11 +57,10 @@ public class GamePanel extends JPanel implements GameListener {
 		statusLabel = new JLabel();
 		statusLabel.setText("Here be text! This should get updated.");
 		statusLabel.setFont(statusFont);
-		statusLabel.setForeground(Color.black);
+		statusLabel.setForeground(Color.white);
 		
 		tablePanel = new JPanel();
 		tablePanel.setLayout(new GridLayout(2,1));
-//		tablePanel.setLayout(new BorderLayout());
 		tablePanel.setBackground(new Color(0,0,0,0));
 		
 		tablePanel.add(dealerCardPanel);
@@ -82,21 +81,10 @@ public class GamePanel extends JPanel implements GameListener {
 		System.out.println(card.toString());
 		playerCards.add(card);
 
-		
-//		CardPanel playerCardPanel = new CardPanel(playerCards);
-
 		playerCardPanel.add(new DrawableCard(card));
 		
 		tablePanel.add(dealerCardPanel);
-		tablePanel.add(playerCardPanel);
-		
-//		this.add(playerCardPanel, BorderLayout.CENTER);
-		
-//		this.validate();
-//
-//		this.repaint();
-		
-		
+		tablePanel.add(playerCardPanel);		
 	}
 	
 	@Override
@@ -104,30 +92,16 @@ public class GamePanel extends JPanel implements GameListener {
 		
 		System.out.println(card.toString());
 		dealerCards.add(card);
-		
-//		CardPanel dealerCardPanel = new CardPanel(dealerCards);
 
 		dealerCardPanel.add(new DrawableCard(card));
 		
 		tablePanel.add(dealerCardPanel);
 		tablePanel.add(playerCardPanel);
-//		this.add(dealerCardPanel, BorderLayout.CENTER);
-		
-//		dealerCardPanel.validate();
-//		this.validate();
-//		this.repaint();
-
 	}
 	
 	@Override
 	public void setLabel(String text){
 		statusLabel.setText(text);
-//		dealerLabel.validate();
-//		dealerLabel.repaint();
-//		dealerCardPanel.repaint();
-//		playerCardPanel.repaint();
-//		this.validate();
-		this.repaint();
 	}
 
 
