@@ -2,6 +2,7 @@ package uppgift6;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.util.ArrayList;
 import javax.swing.JLabel;
@@ -20,6 +21,7 @@ public class GamePanel extends JPanel implements GameListener {
 	private JPanel dealerCardPanel;
 	private JLabel statusLabel;
 	private Font statusFont;
+	private TablePanel tablePanel;
 	
 	public GamePanel(){
 
@@ -27,7 +29,10 @@ public class GamePanel extends JPanel implements GameListener {
 		
 		this.setSize(9999, 500);
 		this.setBackground(new Color(0,0,0,0));
-
+		
+		tablePanel = new TablePanel();
+		
+		
 		dealerCardPanel = new CardPanel(dealerCards);
 		dealerCardPanel.setSize(9999, 110);
 		
@@ -40,9 +45,11 @@ public class GamePanel extends JPanel implements GameListener {
 		statusLabel.setFont(statusFont);
 		statusLabel.setForeground(Color.black);
 		
-		
-		this.add(dealerCardPanel, BorderLayout.NORTH);
-		this.add(playerCardPanel, BorderLayout.CENTER);
+		tablePanel.add(dealerCardPanel, FlowLayout.LEFT);
+		tablePanel.add(playerCardPanel, FlowLayout.LEFT);
+		this.add(tablePanel, BorderLayout.CENTER);
+//		this.add(dealerCardPanel, BorderLayout.NORTH);
+//		this.add(playerCardPanel, BorderLayout.CENTER);
 		this.add(statusLabel, BorderLayout.SOUTH);
 		
 		gameStart();
@@ -85,11 +92,17 @@ public class GamePanel extends JPanel implements GameListener {
 		
 		CardPanel playerCardPanel = new CardPanel(playerCards);
 
-		this.add(playerCardPanel, BorderLayout.CENTER);
+		playerCardPanel.add(new DrawableCard(card));
 		
-		this.validate();
-
-		this.repaint();
+		tablePanel.add(playerCardPanel);
+		
+//		this.add(playerCardPanel, BorderLayout.CENTER);
+		
+//		this.validate();
+//
+//		this.repaint();
+		
+		
 	}
 	
 	@Override
@@ -100,11 +113,15 @@ public class GamePanel extends JPanel implements GameListener {
 		
 		CardPanel dealerCardPanel = new CardPanel(dealerCards);
 
-		this.add(dealerCardPanel, BorderLayout.CENTER);
+		playerCardPanel.add(new DrawableCard(card));
+		
+		tablePanel.add(playerCardPanel);
+		
+//		this.add(dealerCardPanel, BorderLayout.CENTER);
 		
 //		dealerCardPanel.validate();
 //		this.validate();
-		this.repaint();
+//		this.repaint();
 
 	}
 	
