@@ -13,6 +13,7 @@ public class Game {
 	private int dealerScore;
 	private int playerScore;
 	private boolean stay = false;
+	private boolean gameOver = false;
 	
 	public Game(GameListener gameListener){
 		
@@ -34,7 +35,17 @@ public class Game {
 		ArrayList<Card> playerCards = dealer.getPlayerCards();
 		dealer.dealCards(1);
 		playerScore = checkScore(playerCards);
-		gameListener.setLabel("Player has: " + playerScore);
+		gameListener.setLabel("You have: " + playerScore);
+		
+		if(playerScore > 21){
+			System.out.println("You busted! You Loose!");
+			gameListener.setLabel("You busted! You Loose!");
+			gameOver = true;
+		} else if(playerCards.size() == 2 && playerScore == 21){
+				System.out.println("You got BlackJack! You Win!");
+				gameListener.setLabel("You got BlackJack! You Win!");
+				gameOver = true;
+		}
 	}
 	
 	public void dealDealerCards(){		
@@ -45,10 +56,8 @@ public class Game {
 		stay = true;
 		ArrayList<Card> dealerCards = dealer.getDealerCards();
 		dealerScore = checkScore(dealerCards);
-//		dealDealerCards();
 		
-		if(dealerScore < 17){	
-//			dealerCards = dealer.getDealerCards();
+		if(dealerScore < 17){
 			System.out.println("Dealer has: " + dealerScore);
 			gameListener.setLabel("Dealer has: " + dealerScore);
 			dealDealerCards();
@@ -56,12 +65,15 @@ public class Game {
 		} else if(dealerScore > 21){
 			System.out.println("Dealer bust! You Win!");
 			gameListener.setLabel("Dealer bust! You Win!");
+			gameOver = true;
 		} else {
 			if(dealerCards.size() == 2 && dealerScore == 21){
 				System.out.println("Dealer has BlackJack! You Loose!");
 				gameListener.setLabel("Dealer has BlackJack! You Loose!");
+				gameOver = true;
 			} else {
 				decideWinner();
+				gameOver = true;
 			}
 		}
 	}	
@@ -93,17 +105,19 @@ public class Game {
 	
 	private void decideWinner(){
 		System.out.println("Dealer has: " + dealerScore);
-		System.out.println("Player has: " + playerScore);
+		System.out.println("You have: " + playerScore);
 		
 		if(playerScore > dealerScore){
 			System.out.println("Player wins!");
-			gameListener.setLabel("Dealer has: " + dealerScore + ", Player has: " + playerScore + ", Player wins!");
+			gameListener.setLabel("Dealer has: " + dealerScore + ", You have: " + playerScore + ", You Win!");
 		} else {
 			System.out.println("Dealer wins!");
-			gameListener.setLabel("Dealer has: " + dealerScore + ", Player has: " + playerScore + ", Dealer wins!");
+			gameListener.setLabel("Dealer has: " + dealerScore + ", You have: " + playerScore + ", You Loose!");
 		}
 	}
 	
 	public boolean getStay(){ return stay; }
+	public boolean getGameOver(){ return gameOver; }
+	
 	
 }

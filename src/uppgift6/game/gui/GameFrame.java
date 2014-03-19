@@ -38,8 +38,8 @@ public class GameFrame extends JFrame{
 		buttonPanel.setSize(9999, 50);
 		buttonPanel.setBackground(new Color(0,0,0,0));
 		
-		JButton newGameButton = new JButton("New Game");
-		newGameButton.addActionListener(startNewGame);
+		JButton newGameButton = new JButton("Deal");
+		newGameButton.addActionListener(deal);
 		
 		JButton hitButton = new JButton("Hit");
 		hitButton.addActionListener(hit);
@@ -61,7 +61,7 @@ public class GameFrame extends JFrame{
 		this.setVisible(true);
 	}
 	
-	private ActionListener startNewGame = new ActionListener(){
+	private ActionListener deal = new ActionListener(){
 		@Override
 		public void actionPerformed(ActionEvent e){
 			backgroundPanel.repaint();
@@ -72,7 +72,8 @@ public class GameFrame extends JFrame{
 	private ActionListener hit = new ActionListener(){
 		@Override
 		public void actionPerformed(ActionEvent e){
-			if(game != null && game.getStay() == false){
+			if(game != null && game.getStay() == false && 
+					game.getGameOver() == false){
 				backgroundPanel.repaint();
 				game.dealPlayerCards();
 			} 			
@@ -82,7 +83,8 @@ public class GameFrame extends JFrame{
 	private ActionListener stay = new ActionListener(){
 		@Override
 		public void actionPerformed(ActionEvent e){
-			if(game != null && game.getStay() == false){
+			if(game != null && game.getStay() == false && 
+					game.getGameOver() == false){
 				backgroundPanel.repaint();
 				game.dealerPlay();
 			} 			
