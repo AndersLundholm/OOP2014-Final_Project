@@ -31,8 +31,11 @@ public class Game {
 
 	
 	public void dealPlayerCards(){	
-		dealer.dealCards(1);	
-		checkPlayerScore();
+		ArrayList<Card> playerCards = dealer.getPlayerCards();
+		
+		dealer.dealCards(1);
+		playerScore = checkScore(playerCards);
+//		checkPlayerScore();
 		gameListener.setLabel("Player has: " + playerScore);
 	}
 	
@@ -43,21 +46,25 @@ public class Game {
 	public void dealerPlay() {
 		stay = true;
 		ArrayList<Card> dealerCards = dealer.getDealerCards();
-		dealerScore = 0;
+		dealerScore = checkScore(dealerCards);
 		dealDealerCards();
-		boolean ace = false;
-		for(Card c : dealerCards){
-			if(c.getRank() == 1 && dealerScore >= 6 && dealerScore <= 10){
-				dealerScore += 11;
-				ace = true;
-			} else {
-				if(ace == true && dealerScore >= 6 && dealerScore <= 10){
-					dealerScore += c.getRank() +10;
-				} else {
-					dealerScore += c.getRank();
-				}
-			}
-		}
+		
+		
+//		boolean ace = false;
+//		for(Card c : dealerCards){
+//			if(c.getRank() == 1 && dealerScore >= 6 && dealerScore <= 10){
+//				dealerScore += 11;
+//				ace = true;
+//			} else if(c.getRank() == 1){
+//				ace = true;
+//			} else {
+//				if(ace == true && dealerScore >= 6 && dealerScore <= 10){
+//					dealerScore += c.getRank() +10;
+//				} else {
+//					dealerScore += c.getRank();
+//				}
+//			}
+//		}
 		
 		if(dealerScore < 17){	
 			dealerCards = dealer.getDealerCards();
@@ -81,33 +88,91 @@ public class Game {
 	
 	public void checkPlayerScore(){
 		
-		ArrayList<Card> playerCards = dealer.getPlayerCards();
-		playerScore = 0;
-		boolean ace = false;
-		for(Card c : playerCards){
-			if(c.getRank() == 1 && dealerScore >= 6 && dealerScore <= 10){
-				playerScore += 11;
-				ace = true;
-			} else {
-				if(ace == true && dealerScore >= 6 && dealerScore <= 10){
-					playerScore += c.getRank() +10;
-				} else {
-					playerScore += c.getRank();
-				}
-			}	
-		}
+//		ArrayList<Card> playerCards = dealer.getPlayerCards();
+//		playerScore = checkScore(playerCards);
+//		boolean ace = false;
+//		for(Card c : playerCards){
+//			
+//			if(c.getRank() == 1){
+//				ace = true;
+//				
+//				if(playerScore <= 10){
+//					playerScore += 11;
+//				} else {
+//					playerScore += 1;
+//					ace = false;
+//				}
+//			} else if(ace == true && playerScore > 21-c.getRank()) {
+//				playerScore += c.getRank() - 10;
+//				ace = false;
+//			} else {
+//				playerScore += c.getRank();
+//			}
+			
 		
-		if(dealerScore > 21){
-			System.out.println("Dealer bust!");
-		} else {
-			if(playerCards.size() == 2 && dealerScore == 21){
-				System.out.println("Player has BlackJack!");
-			}
-			System.out.println("Player has: " + playerScore);
-		}	
+		
+		
+		
+		
+//			if(ace == true && playerScore >= 6 && playerScore <= 10){
+//				
+//			}
+//			
+//			if(c.getRank() == 1 && playerScore >= 6 && playerScore <= 10){
+//				playerScore += 11;
+//				ace = true;
+//			} else if(c.getRank() == 1){
+//				playerScore += c.getRank();
+//				ace = true;
+//			} else {
+//				if(ace == true && playerScore >= 6 && playerScore <= 10){
+//					playerScore += c.getRank() +10;
+//				} else if(ace == true && c.getRank() == 10 && playerScore == 1){
+//					playerScore += 10;
+//					gameListener.setLabel("Players has BlackJack!");
+//					stay = true;
+//				}else {
+//					playerScore += c.getRank();
+//				}
+//			}	
+//		}
+		
+//		if(dealerScore > 21){
+//			System.out.println("Dealer bust!");
+//		} else {
+//			if(playerCards.size() == 2 && playerScore == 21){
+//				System.out.println("Player has BlackJack!");
+//			}
+//			System.out.println("Player has: " + playerScore);
+//		}	
 	}
+
+	private int checkScore(ArrayList<Card> cards){
+		
+		int score = 0;
+		boolean ace = false;
+		for(Card c : cards){
+			
+			if(c.getRank() == 1){
+				ace = true;
+				
+				if(score <= 10){
+					score += 11;
+				} else {
+					score += 1;
+					ace = false;
+				}
+			} else if(ace == true && score > 21-c.getRank()) {
+				score += c.getRank() - 10;
+				ace = false;
+			} else {
+				score += c.getRank();
+			}
+		}
+		return score;
+	}	
 	
-	public void decideWinner(){
+	private void decideWinner(){
 		checkPlayerScore();
 		System.out.println("Dealer has: " + dealerScore);
 		System.out.println("Player has: " + playerScore);

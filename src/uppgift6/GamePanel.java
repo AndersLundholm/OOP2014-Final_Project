@@ -22,7 +22,6 @@ public class GamePanel extends JPanel implements GameListener {
 	private JPanel dealerCardPanel;
 	private JLabel statusLabel;
 	private Font statusFont;
-//	private TablePanel tablePanel;
 	private JPanel tablePanel;
 	
 	public GamePanel(){
