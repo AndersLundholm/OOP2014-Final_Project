@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  * @author Anders Lundholm
  *
  */
-public class MainFrame extends JFrame{
+public class GameFrame extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 	private BackgroundPanel backgroundPanel;
@@ -22,7 +22,7 @@ public class MainFrame extends JFrame{
 	private ImageIcon image;
 	private Game game;
 	
-	public MainFrame(){
+	public GameFrame(){
 		this.setLayout(new BorderLayout());
 		image = new ImageIcon("img/background.jpg");
 		backgroundPanel = new BackgroundPanel(image);
