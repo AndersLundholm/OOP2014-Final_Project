@@ -2,6 +2,7 @@ package uppgift6.game.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -20,8 +21,14 @@ public class GamePanel extends JPanel implements GameListener {
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Card> playerCards = new ArrayList<Card>();
 	private ArrayList<Card> dealerCards = new ArrayList<Card>();
+	private JPanel playerPanel;
+	private JPanel dealerPanel;
 	private JPanel playerCardPanel;
 	private JPanel dealerCardPanel;
+	private JPanel dealerLabelPanel;
+	private JPanel playerLabelPanel;
+	private JLabel playerLabel;
+	private JLabel dealerLabel;
 	private JLabel statusLabel;
 	private Font statusFont;
 	private JPanel tablePanel;
@@ -48,15 +55,42 @@ public class GamePanel extends JPanel implements GameListener {
 		this.validate();
 		this.repaint();
 		
+		statusFont = new Font("SansSerif", Font.BOLD, 16);
+		
+		playerLabel = new JLabel("Player");
+		playerLabel.setFont(statusFont);
+		playerLabel.setForeground(Color.white);
+			
+		dealerLabel = new JLabel("Dealer");
+		dealerLabel.setFont(statusFont);
+		dealerLabel.setForeground(Color.white);
+		
+		dealerLabelPanel = new JPanel(new FlowLayout());
+		dealerLabelPanel.setBackground(new Color(0,0,0,0));
+		dealerLabelPanel.add(dealerLabel);
+		
+		playerLabelPanel = new JPanel(new FlowLayout());
+		playerLabelPanel.setBackground(new Color(0,0,0,0));
+		playerLabelPanel.add(playerLabel);
+		
+		playerPanel = new JPanel(new BorderLayout());
+		playerPanel.setBackground(new Color(0,0,0,0));
+		
+		dealerPanel = new JPanel(new BorderLayout());
+		dealerPanel.setBackground(new Color(0,0,0,0));
+	
+		playerPanel = new JPanel(new BorderLayout());
+		playerPanel.setBackground(new Color(0,0,0,0));
+		
 		dealerCardPanel = new JPanel();
 		dealerCardPanel.setBackground(new Color(0,0,0,0));
 	
 		playerCardPanel = new JPanel();
 		playerCardPanel.setBackground(new Color(0,0,0,0));
 
-		statusFont = new Font("SansSerif", Font.BOLD, 16);
+		
 		statusLabel = new JLabel();
-		statusLabel.setText("Here be text! This should get updated.");
+		statusLabel.setText("Welcome to BlackJack! Hit the Deal button to start playing.");
 		statusLabel.setFont(statusFont);
 		statusLabel.setForeground(Color.white);
 		
@@ -64,8 +98,14 @@ public class GamePanel extends JPanel implements GameListener {
 		tablePanel.setLayout(new GridLayout(2,1));
 		tablePanel.setBackground(new Color(0,0,0,0));
 		
-		tablePanel.add(dealerCardPanel);
-		tablePanel.add(playerCardPanel);
+		dealerPanel.add(dealerCardPanel, BorderLayout.NORTH);
+		dealerPanel.add(dealerLabelPanel, BorderLayout.CENTER);
+		
+		playerPanel.add(playerCardPanel, BorderLayout.NORTH);
+		playerPanel.add(playerLabelPanel, BorderLayout.CENTER);
+		
+		tablePanel.add(dealerPanel);
+		tablePanel.add(playerPanel);
 		this.add(tablePanel, BorderLayout.CENTER);
 		this.add(statusLabel, BorderLayout.SOUTH);
 	}
@@ -84,8 +124,9 @@ public class GamePanel extends JPanel implements GameListener {
 
 		playerCardPanel.add(new DrawableCard(card));
 		
-		tablePanel.add(dealerCardPanel);
-		tablePanel.add(playerCardPanel);		
+		
+//		tablePanel.add(dealerPanel);
+//		tablePanel.add(playerPanel);		
 	}
 	
 	@Override
@@ -96,8 +137,9 @@ public class GamePanel extends JPanel implements GameListener {
 
 		dealerCardPanel.add(new DrawableCard(card));
 		
-		tablePanel.add(dealerCardPanel);
-		tablePanel.add(playerCardPanel);
+		
+//		tablePanel.add(dealerPanel);
+//		tablePanel.add(playerPanel);
 	}
 	
 	@Override
