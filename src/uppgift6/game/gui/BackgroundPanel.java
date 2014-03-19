@@ -1,4 +1,4 @@
-package uppgift6;
+package uppgift6.game.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Graphics;

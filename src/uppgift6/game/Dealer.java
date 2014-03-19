@@ -1,5 +1,5 @@
 
-package uppgift6;
+package uppgift6.game;
 
 import java.util.ArrayList;
 

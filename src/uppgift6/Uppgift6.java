@@ -1,5 +1,7 @@
 package uppgift6;
 
+import uppgift6.game.gui.GameFrame;
+
 /**
  * @author Anders Lundholm
  *

@@ -1,4 +1,4 @@
-package uppgift6;
+package uppgift6.game;
 
 /**
  * Listener of basic game events.

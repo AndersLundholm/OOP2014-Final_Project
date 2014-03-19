@@ -1,4 +1,4 @@
-package uppgift6;
+package uppgift6.game.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -9,6 +9,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import uppgift6.game.Game;
 
 /**
  * @author Anders Lundholm

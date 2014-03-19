@@ -1,8 +1,6 @@
-package uppgift6;
+package uppgift6.game;
 
 import java.awt.Image;
-
-import javax.swing.ImageIcon;
 
 /**
  * @author Anders Lundholm

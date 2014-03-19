@@ -1,7 +1,10 @@
-package uppgift6;
+package uppgift6.game.gui;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import uppgift6.game.Card;
 
 /**
  * @author Anders Lundholm

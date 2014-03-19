@@ -1,13 +1,15 @@
-package uppgift6;
+package uppgift6.game.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import uppgift6.game.Card;
+import uppgift6.game.GameListener;
 
 /**
  * @author Anders Lundholm
