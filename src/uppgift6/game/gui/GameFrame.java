@@ -13,6 +13,11 @@ import javax.swing.JPanel;
 import uppgift6.game.Game;
 
 /**
+ * This frame is the main window.
+ * Added to this frame is the GamePanel,
+ * which contains the graphics for the game, 
+ * and the ButtonPanel, which contains the buttons.
+ *  
  * @author Anders Lundholm
  *
  */

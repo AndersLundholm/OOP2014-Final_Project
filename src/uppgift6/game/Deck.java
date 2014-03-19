@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
+ * This is a collection of 52 card card objects.
+ * 
  * @author Anders Lundholm
  *
  */

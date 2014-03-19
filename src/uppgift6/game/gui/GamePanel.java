@@ -13,6 +13,9 @@ import uppgift6.game.Card;
 import uppgift6.game.GameListener;
 
 /**
+ * This panel contains all panels for the graphics for the game.
+ * It is updated by implementing the GameListener interface.  
+ * 
  * @author Anders Lundholm
  *
  */
@@ -36,18 +39,14 @@ public class GamePanel extends JPanel implements GameListener {
 	public GamePanel(){
 
 		this.setLayout(new BorderLayout());
-		
-		this.setSize(9999, 500);
 		this.setBackground(new Color(0,0,0,0));
 	
 		gameStart();
-		
 	}
 
 	@Override
 	public void gameStart() {
-
-		System.out.println("Game started!");
+		
 		playerCards = new ArrayList<Card>();
 		dealerCards = new ArrayList<Card>();
 		
@@ -67,11 +66,10 @@ public class GamePanel extends JPanel implements GameListener {
 		
 		dealerLabelPanel = new JPanel(new FlowLayout());
 		dealerLabelPanel.setBackground(new Color(0,0,0,0));
-		dealerLabelPanel.add(dealerLabel);
 		
 		playerLabelPanel = new JPanel(new FlowLayout());
 		playerLabelPanel.setBackground(new Color(0,0,0,0));
-		playerLabelPanel.add(playerLabel);
+		
 		
 		playerPanel = new JPanel(new BorderLayout());
 		playerPanel.setBackground(new Color(0,0,0,0));
@@ -109,49 +107,29 @@ public class GamePanel extends JPanel implements GameListener {
 		this.add(tablePanel, BorderLayout.CENTER);
 		this.add(statusLabel, BorderLayout.SOUTH);
 	}
-	
-	@Override
-	public void playerBet(int bet) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void dealPlayerCard(Card card) {
 		
-		System.out.println(card.toString());
 		playerCards.add(card);
-
+		
 		playerCardPanel.add(new DrawableCard(card));
 		
-		
-//		tablePanel.add(dealerPanel);
-//		tablePanel.add(playerPanel);		
+		playerLabelPanel.add(playerLabel);
 	}
 	
 	@Override
 	public void dealDealerCard(Card card) {
 		
-		System.out.println(card.toString());
 		dealerCards.add(card);
-
+		
 		dealerCardPanel.add(new DrawableCard(card));
 		
-		
-//		tablePanel.add(dealerPanel);
-//		tablePanel.add(playerPanel);
+		dealerLabelPanel.add(dealerLabel);
 	}
 	
 	@Override
-	public void setLabel(String text){
+	public void setStatusLabel(String text){
 		statusLabel.setText(text);
 	}
-
-
-	@Override
-	public void gameOver() {
-
-		
-	}
-
 }

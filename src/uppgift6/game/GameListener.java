@@ -1,15 +1,14 @@
 package uppgift6.game;
 
 /**
- * Listener of basic game events.
+ * Listener interface of basic game events.
+ * 
  * @author Anders Lundholm
  *
  */
 public interface GameListener {
 	void gameStart();
-	void playerBet(int bet);
 	void dealPlayerCard(Card card);
 	void dealDealerCard(Card card);
-	void setLabel(String text);
-	void gameOver();
+	void setStatusLabel(String text);
 }

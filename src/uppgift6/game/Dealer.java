@@ -4,6 +4,10 @@ package uppgift6.game;
 import java.util.ArrayList;
 
 /**
+ * This class creates an instance of Deck and then
+ * removes random cards from that deck and passes them
+ * to the GameListener interface. 
+ * 
  * @author Anders Lundholm
  *
  */
@@ -20,6 +24,12 @@ public class Dealer {
 		deck = new Deck();
 	}
 	
+	/**
+	 * Passes a random card to the GameListener interface.
+	 * 
+	 * @param dealTo 1 to deal card to player and
+	 * any other integer to deal card to the dealer
+	 */
 	public void dealCards(int dealTo){	
 		if(deck.getSize() > 0){
 			card = deck.drawCard();

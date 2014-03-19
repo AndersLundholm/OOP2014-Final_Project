@@ -8,6 +8,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
+ * Panel that sets the background image.
+ * 
  * @author Anders Lundholm
  *
  */

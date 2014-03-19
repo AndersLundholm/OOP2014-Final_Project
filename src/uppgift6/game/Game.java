@@ -3,6 +3,9 @@ package uppgift6.game;
 import java.util.ArrayList;
 
 /**
+ * This class is handling the logic of the game.
+ * It updates the graphics by calling the GameListener interface.
+ * 
  * @author Anders Lundholm
  *
  */
@@ -35,15 +38,13 @@ public class Game {
 		ArrayList<Card> playerCards = dealer.getPlayerCards();
 		dealer.dealCards(1);
 		playerScore = checkScore(playerCards);
-		gameListener.setLabel("You have: " + playerScore);
+		gameListener.setStatusLabel("You have: " + playerScore);
 		
 		if(playerScore > 21){
-			System.out.println("You busted! You Loose!");
-			gameListener.setLabel("You busted! You Loose!");
+			gameListener.setStatusLabel("You busted! You Loose!");
 			gameOver = true;
 		} else if(playerCards.size() == 2 && playerScore == 21){
-				System.out.println("You got BlackJack! You Win!");
-				gameListener.setLabel("You got BlackJack! You Win!");
+				gameListener.setStatusLabel("You got BlackJack! You Win!");
 				gameOver = true;
 		}
 	}
@@ -58,18 +59,15 @@ public class Game {
 		dealerScore = checkScore(dealerCards);
 		
 		if(dealerScore < 17){
-			System.out.println("Dealer has: " + dealerScore);
-			gameListener.setLabel("Dealer has: " + dealerScore);
+			gameListener.setStatusLabel("Dealer has: " + dealerScore);
 			dealDealerCards();
 			dealerPlay();
 		} else if(dealerScore > 21){
-			System.out.println("Dealer bust! You Win!");
-			gameListener.setLabel("Dealer bust! You Win!");
+			gameListener.setStatusLabel("Dealer bust! You Win!");
 			gameOver = true;
 		} else {
 			if(dealerCards.size() == 2 && dealerScore == 21){
-				System.out.println("Dealer has BlackJack! You Loose!");
-				gameListener.setLabel("Dealer has BlackJack! You Loose!");
+				gameListener.setStatusLabel("Dealer has BlackJack! You Loose!");
 				gameOver = true;
 			} else {
 				decideWinner();
@@ -79,11 +77,10 @@ public class Game {
 	}	
 
 	private int checkScore(ArrayList<Card> cards){
-		
 		int score = 0;
 		boolean ace = false;
+		
 		for(Card c : cards){
-			
 			if(c.getRank() == 1){
 				ace = true;
 				
@@ -104,20 +101,16 @@ public class Game {
 	}	
 	
 	private void decideWinner(){
-		System.out.println("Dealer has: " + dealerScore);
-		System.out.println("You have: " + playerScore);
 		
 		if(playerScore > dealerScore){
-			System.out.println("Player wins!");
-			gameListener.setLabel("Dealer has: " + dealerScore + ", You have: " + playerScore + ", You Win!");
+			gameListener.setStatusLabel("Dealer has: " + dealerScore + 
+					", You have: " + playerScore + ", You Win!");
 		} else {
-			System.out.println("Dealer wins!");
-			gameListener.setLabel("Dealer has: " + dealerScore + ", You have: " + playerScore + ", You Loose!");
+			gameListener.setStatusLabel("Dealer has: " + dealerScore + 
+					", You have: " + playerScore + ", You Loose!");
 		}
 	}
 	
 	public boolean getStay(){ return stay; }
 	public boolean getGameOver(){ return gameOver; }
-	
-	
 }
