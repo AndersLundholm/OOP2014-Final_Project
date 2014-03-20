@@ -10,5 +10,5 @@ public interface GameListener {
 	void gameStart();
 	void dealPlayerCard(Card card);
 	void dealDealerCard(Card card);
-	void setStatusLabel(String text);
+	void setStatus(String text);
 }

@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -13,8 +12,9 @@ import uppgift6.game.Card;
 import uppgift6.game.GameListener;
 
 /**
- * This panel contains all panels for the graphics for the game.
- * It is updated by implementing the GameListener interface.  
+ * This panel contains all panels and labels for the 
+ * graphics for the game. It is updated by implementing
+ * the GameListener interface.  
  * 
  * @author Anders Lundholm
  *
@@ -22,8 +22,6 @@ import uppgift6.game.GameListener;
 public class GamePanel extends JPanel implements GameListener {
 
 	private static final long serialVersionUID = 1L;
-	private ArrayList<Card> playerCards = new ArrayList<Card>();
-	private ArrayList<Card> dealerCards = new ArrayList<Card>();
 	private JPanel playerPanel;
 	private JPanel dealerPanel;
 	private JPanel playerCardPanel;
@@ -37,19 +35,26 @@ public class GamePanel extends JPanel implements GameListener {
 	private JPanel tablePanel;
 	
 	public GamePanel(){
-
 		this.setLayout(new BorderLayout());
 		this.setBackground(new Color(0,0,0,0));
 	
 		gameStart();
 	}
 
+	/**
+	 * Starts with removing everything in the panel and then
+	 * validate and repaints it to clear old paintings.
+	 * The panel structure is: tablePanel is the outer panel
+	 * which is added to the GamePanel (this), and contains
+	 * all other panels and also the statusLabel which gets updated
+	 * with game information. In tablePanel is the dealerPanel 
+	 * and the playerPanel added. Inside these panels
+	 * are one cardPanel for each panel (playerCardPanel and 
+	 * dealerCardPanel) and also a panel for each that contains
+	 * a label that prints out the names ("Dealer" and Player).
+	 */
 	@Override
-	public void gameStart() {
-		
-		playerCards = new ArrayList<Card>();
-		dealerCards = new ArrayList<Card>();
-		
+	public void gameStart() {	
 		this.removeAll();
 		this.validate();
 		this.repaint();
@@ -85,7 +90,6 @@ public class GamePanel extends JPanel implements GameListener {
 	
 		playerCardPanel = new JPanel();
 		playerCardPanel.setBackground(new Color(0,0,0,0));
-
 		
 		statusLabel = new JLabel();
 		statusLabel.setText("Welcome to BlackJack! Hit the Deal button to start playing.");
@@ -107,29 +111,33 @@ public class GamePanel extends JPanel implements GameListener {
 		this.add(tablePanel, BorderLayout.CENTER);
 		this.add(statusLabel, BorderLayout.SOUTH);
 	}
-
+	/**
+	 * Adds a graphical card, to the players card panel,
+	 * from the Card object passed. Also adds the player
+	 * label (the String "Player") below the card.
+	 */
 	@Override
 	public void dealPlayerCard(Card card) {
-		
-		playerCards.add(card);
-		
-		playerCardPanel.add(new DrawableCard(card));
-		
+		playerCardPanel.add(new DrawableCard(card));	
 		playerLabelPanel.add(playerLabel);
 	}
 	
+	/**
+	 * Adds a graphical card, to the dealers card panel,
+	 * from the Card object passed. Also adds the dealer
+	 * label (the String "Dealer") below the card.
+	 */
 	@Override
 	public void dealDealerCard(Card card) {
-		
-		dealerCards.add(card);
-		
-		dealerCardPanel.add(new DrawableCard(card));
-		
+		dealerCardPanel.add(new DrawableCard(card));	
 		dealerLabelPanel.add(dealerLabel);
 	}
 	
+	/**
+	 * Updates the status label with the String passed.
+	 */
 	@Override
-	public void setStatusLabel(String text){
+	public void setStatus(String text){
 		statusLabel.setText(text);
 	}
 }
