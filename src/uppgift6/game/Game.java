@@ -32,8 +32,6 @@ public class Game {
 		dealPlayerCards();
 	}
 	
-
-	
 	public void dealPlayerCards(){	
 		ArrayList<Card> playerCards = dealer.getPlayerCards();
 		dealer.dealCards(1);

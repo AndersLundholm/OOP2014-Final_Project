@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 
 /**
  * Panel that sets the background image.
+ * Constructor takes the passed ImageIcon
+ * and draws it on this panel. 
  * 
  * @author Anders Lundholm
  *
@@ -18,6 +20,10 @@ public class BackgroundPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private Image backgroundImage;
 	
+	/**
+	 * Sets the passed ImageIcon as background.
+	 * @param image the ImageIcon to be set as background.
+	 */
 	public BackgroundPanel(ImageIcon image){
 		this.setLayout(new BorderLayout());
 		backgroundImage = image.getImage();

@@ -66,32 +66,49 @@ public class GameFrame extends JFrame{
 		this.setVisible(true);
 	}
 	
+	/**
+	 * Creates a new Game and passes the gamePanel object
+	 * and then repaints the backgroundPanel to clear 
+	 * old paintings.
+	 */
 	private ActionListener deal = new ActionListener(){
 		@Override
-		public void actionPerformed(ActionEvent e){
-			backgroundPanel.repaint();
+		public void actionPerformed(ActionEvent e){	
 			game = new Game(gamePanel);
+			backgroundPanel.repaint();
 		}
 	};
 	
+	/**
+	 * Checks if a Game object is created and that the 
+	 * game is not stopped or that the player has selected
+	 * to stay. Then deals a card to the player and then 
+	 * repaints the backgroundPanel to clear old paintings.
+	 */
 	private ActionListener hit = new ActionListener(){
 		@Override
 		public void actionPerformed(ActionEvent e){
 			if(game != null && game.getStay() == false && 
-					game.getGameOver() == false){
-				backgroundPanel.repaint();
+					game.getGameOver() == false){	
 				game.dealPlayerCards();
+				backgroundPanel.repaint();
 			} 			
 		}
 	};
 	
+	/**
+	 * Checks if a Game object is created and that the 
+	 * game is not stopped or that the player has selected
+	 * to stay. Then deals all the cards to the dealer and then 
+	 * repaints the backgroundPanel to clear old paintings.
+	 */
 	private ActionListener stay = new ActionListener(){
 		@Override
 		public void actionPerformed(ActionEvent e){
 			if(game != null && game.getStay() == false && 
-					game.getGameOver() == false){
-				backgroundPanel.repaint();
+					game.getGameOver() == false){	
 				game.dealerPlay();
+				backgroundPanel.repaint();
 			} 			
 		}
 	};
