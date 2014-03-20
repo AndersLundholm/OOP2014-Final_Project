@@ -91,7 +91,22 @@ public class Game {
 				gameOver = true;
 			}
 		}
-	}	
+	}
+	/**
+	 * Returns false as unless the stay button has been clicked
+	 * at which time the dealerPlay() method is run.
+	 */
+	public boolean getStay(){ 
+		return stay; 
+	} 
+	
+	/**
+	 *  Returns false as unless the player or dealer is 
+	 *  busted or a winner has been decided.
+	 */
+	public boolean getGameOver(){ 
+		return gameOver;
+	}
 
 	/**
 	 * Calculates the total score of the passed list of cards.
@@ -139,7 +154,4 @@ public class Game {
 					", You have: " + playerScore + ", You Loose!");
 		}
 	}
-	
-	public boolean getStay(){ return stay; }
-	public boolean getGameOver(){ return gameOver; }
 }

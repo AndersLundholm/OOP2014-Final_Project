@@ -37,7 +37,17 @@ public class Deck {
 		return topCard;
 	}
 	
-	public ArrayList<Card> getDeck(){ return deck; }
-	public int getSize(){ return deck.size(); }
-
+	/**
+	 * @return and ArrayList with the card objects.
+	 */
+	public ArrayList<Card> getDeck(){ 
+		return deck;
+	}
+	
+	/**
+	 * @return the current size of the deck.
+	 */
+	public int getSize(){
+		return deck.size();
+	}
 }
