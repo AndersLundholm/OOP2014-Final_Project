@@ -31,7 +31,7 @@ public class GameFrame extends JFrame{
 	
 	public GameFrame(){
 		this.setLayout(new BorderLayout());
-		image = new ImageIcon("img/background.jpg");
+		image = new ImageIcon(getClass().getResource("/img/background.jpg"));
 		backgroundPanel = new BackgroundPanel(image);
 		
 		gamePanel = new GamePanel();
