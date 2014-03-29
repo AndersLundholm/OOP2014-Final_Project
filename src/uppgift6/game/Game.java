@@ -22,6 +22,7 @@ public class Game {
 	 * Creates a Dealer object and starts the game
 	 * via the GameListener. Then deals one card to the dealer and
 	 * two cards to the player.
+	 * 
 	 * @param gameListener the GameListener object
 	 */
 	public Game(GameListener gameListener){
@@ -112,6 +113,7 @@ public class Game {
 	 * Calculates the total score of the passed list of cards.
 	 * Counts Ace as one or 11 depending on the total score 
 	 * of the other cards.
+	 * 
 	 * @param cards the list of cards to calculate the score from.
 	 * @return the total score.
 	 */

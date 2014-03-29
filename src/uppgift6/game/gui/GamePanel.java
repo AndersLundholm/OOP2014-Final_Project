@@ -111,6 +111,7 @@ public class GamePanel extends JPanel implements GameListener {
 		this.add(tablePanel, BorderLayout.CENTER);
 		this.add(statusLabel, BorderLayout.SOUTH);
 	}
+	
 	/**
 	 * Adds a graphical card, to the players card panel,
 	 * from the Card object passed. Also adds the player

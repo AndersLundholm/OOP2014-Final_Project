@@ -26,6 +26,7 @@ public class Deck {
 	
 	/**
 	 * Draws a random card from the deck and removes it from the deck.
+	 * 
 	 * @return a random card.
 	 */
 	public Card drawCard(){

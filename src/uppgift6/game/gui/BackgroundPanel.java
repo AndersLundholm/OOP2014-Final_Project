@@ -22,6 +22,7 @@ public class BackgroundPanel extends JPanel{
 	
 	/**
 	 * Sets the passed ImageIcon as background.
+	 * 
 	 * @param image the ImageIcon to be set as background.
 	 */
 	public BackgroundPanel(ImageIcon image){
